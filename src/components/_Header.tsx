@@ -1,9 +1,4 @@
-import React, {
-  FC,
-  ReactElement,
-  useState,
-  useEffect,
-} from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -15,22 +10,19 @@ import {
   Tabs,
   Tab,
   Avatar,
-  Slider,
 } from '@mui/material';
 import {
   Apple,
   GitHub,
   LinkedIn,
   GTranslate,
-  PlayArrow,
-  PlayDisabled,
-  VolumeUp,
   KeyboardArrowUp,
 } from '@mui/icons-material';
 import { styled } from '@mui/system';
 import { TabProps } from '@mui/material';
-import { Link, Link as RouterLink } from 'react-router-dom';
-import myAvatar from '../assets/images/myAvatar.png';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import TimeDisplay from './_TimeDisplay';
 
 interface IScrollTop {
   children: React.ReactElement;
@@ -72,16 +64,23 @@ const ScrollTop: FC<IScrollTop> = (props): ReactElement => {
   );
 };
 
-interface iHeader {}
+interface IHeader {
+  tabValue: number;
+  setTabValue: (val: number) => void;
+}
 
-const Header: FC = (props: iHeader) => {
+const Header: FC<IHeader> = (props) => {
   // Define States
-  const [tabValue, setTabValue] = useState<number>(0);
 
-  // Style Components
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // May use theme later
-  const StyledTab = styled(Tab)<TabProps>(({ theme }) => ({
+  const tabValue = props.tabValue;
+  const setTabValue = props.setTabValue;
+
+  const navigate = useNavigate();
+  const handleClick = (label: string) => {
+    navigate(`/${label}`);
+  };
+
+  const StyledTab = styled(Tab)<TabProps>(() => ({
     fontFamily: 'Helvetica Neue',
     fontSize: 15,
     fontWeight: 450,
@@ -158,42 +157,36 @@ const Header: FC = (props: iHeader) => {
           <Tabs
             value={tabValue}
             onChange={(e, value) => setTabValue(value)}
-            indicatorColor="black"
+            indicatorColor="secondary"
           >
             <StyledTab
               label="Home"
-              component={RouterLink}
-              to="/"
+              onClick={() => handleClick('')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab
               label="About"
-              component={RouterLink}
-              to="/about"
+              onClick={() => handleClick('about')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab
               label="Education"
-              component={RouterLink}
-              to="/education"
+              onClick={() => handleClick('education')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab
               label="Experience"
-              component={RouterLink}
-              to="/experience"
+              onClick={() => handleClick('experience')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab
               label="Project"
-              component={RouterLink}
-              to="/project"
+              onClick={() => handleClick('project')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab
               label="Task"
-              component={RouterLink}
-              to="/task"
+              onClick={() => handleClick('task')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
           </Tabs>
@@ -218,6 +211,7 @@ const Header: FC = (props: iHeader) => {
                 color: 'white',
                 ml: 2,
                 mr: 2,
+                mt: 0.5,
               }}
             />
           </Link>
@@ -235,11 +229,12 @@ const Header: FC = (props: iHeader) => {
                 color: 'white',
                 ml: 2,
                 mr: 2,
+                mt: 0.5,
               }}
             />
           </Link>
           <Avatar
-            src={myAvatar}
+            src="src/assets/images/MyAvatar.png"
             sx={{
               ml: 2,
               mr: 2,
@@ -247,6 +242,7 @@ const Header: FC = (props: iHeader) => {
               height: 24,
             }}
           />
+          <TimeDisplay />
         </Toolbar>
       </AppBar>
       <ScrollTop {...props}>

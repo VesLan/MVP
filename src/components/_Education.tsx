@@ -3,7 +3,11 @@ import React from 'react';
 type Props = {};
 
 function Education({}: Props) {
-  return <div>Education</div>;
+  return (
+    <React.Fragment>
+      <div>Education</div>
+    </React.Fragment>
+  );
 }
 
 export default Education;

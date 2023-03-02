@@ -3,7 +3,11 @@ import React from 'react';
 type Props = {};
 
 const Task = (props: Props) => {
-  return <div>Task</div>;
+  return (
+    <React.Fragment>
+      <div>Task</div>
+    </React.Fragment>
+  );
 };
 
 export default Task;

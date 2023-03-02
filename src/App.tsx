@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import _React, { useState, FC, ReactElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/_Header';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
@@ -11,9 +11,14 @@ import Task from './components/_Task';
 import ContactForm from './components/_ContactForm';
 
 const App: FC = (): ReactElement => {
+  const [tabValue, setTabValue] = useState<number>(0);
+
   return (
     <div className="App">
-      <Header />
+      <Header
+        tabValue={tabValue}
+        setTabValue={setTabValue}
+      />
       <Grid container>
         <Grid xs={9}>
           <Routes>
@@ -32,7 +37,7 @@ const App: FC = (): ReactElement => {
           </Routes>
         </Grid>
         <Grid xs={3}>
-          <ContactForm />
+          {tabValue === 0 && <ContactForm />}
         </Grid>
       </Grid>
     </div>

@@ -3,7 +3,11 @@ import React from 'react';
 type Props = {};
 
 const Experience = (props: Props) => {
-  return <div>Experience</div>;
+  return (
+    <React.Fragment>
+      <div>Experience</div>
+    </React.Fragment>
+  );
 };
 
 export default Experience;
