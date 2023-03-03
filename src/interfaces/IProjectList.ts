@@ -1,3 +1,7 @@
+import React from 'react';
+
 export interface IProjectList {
-  title?: string[];
+  setProjIndex: React.Dispatch<
+    React.SetStateAction<number>
+  >;
 }

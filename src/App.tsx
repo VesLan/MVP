@@ -18,6 +18,7 @@ import ProjectList from './components/_ProjectList';
 
 const App: FC = (): ReactElement => {
   const [tabValue, setTabValue] = useState<number>(0);
+  const [projIndex, setProjIndex] = useState<number>(-1);
 
   return (
     <div className="App">
@@ -38,7 +39,10 @@ const App: FC = (): ReactElement => {
               path="/experience"
               element={<Experience />}
             />
-            <Route path="/project" element={<Project />} />
+            <Route
+              path="/project"
+              element={<Project projIndex={projIndex} />}
+            />
             <Route path="/task" element={<Task />} />
           </Routes>
         </Grid>
@@ -54,7 +58,9 @@ const App: FC = (): ReactElement => {
               <ContactForm />
             </SnackbarProvider>
           )}
-          {tabValue === 4 && <ProjectList />}
+          {tabValue === 4 && (
+            <ProjectList setProjIndex={setProjIndex} />
+          )}
         </Grid>
       </Grid>
     </div>
