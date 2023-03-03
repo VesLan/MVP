@@ -1,13 +1,14 @@
 import React, { useState, useEffect, FC } from 'react';
 import { styled } from '@mui/material/styles';
-// import sendMail from './_sendMail.js';
+import { VariantType, useSnackbar } from 'notistack';
+
 import {
   Button,
   TextField,
   Stack,
   Typography,
 } from '@mui/material';
-// import sendMail from './_sendMail';
+// import SendMail from '../sendEmail';
 
 const validateEmail = (email: string): boolean => {
   // Regular expression for email validation
@@ -50,6 +51,16 @@ const ContactForm: FC = () => {
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleSubmitVariant =
+    (variant: VariantType) => () => {
+      // variant could be success, error, warning, info, or default
+      enqueueSnackbar('Message Sent Successfully!', {
+        variant,
+      });
+    };
+
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
   ) => {
@@ -57,8 +68,10 @@ const ContactForm: FC = () => {
 
     // Validate form data
     const newErrors: Partial<FormValues> = {};
+
     if (!formValues.firstName.trim()) {
       newErrors.firstName = 'First name is required';
+      window.alert('First name is required');
     }
     if (!formValues.lastName.trim()) {
       newErrors.lastName = 'Last name is required';
@@ -71,12 +84,15 @@ const ContactForm: FC = () => {
     if (!formValues.message.trim()) {
       newErrors.message = 'Message is required';
     }
+
     setErrors(newErrors);
+
     if (Object.keys(newErrors).length > 0) {
       return;
     }
 
-    // sendMail(formValues);
+    handleSubmitVariant('success')();
+    // SendMail().catch(console.error);
   };
 
   return (
@@ -97,7 +113,7 @@ const ContactForm: FC = () => {
             onChange={handleInputChange}
             error={!!errors.firstName}
             helperText={errors.firstName}
-            required
+            // required
           />
           <TextField
             label="Last Name"
@@ -136,6 +152,7 @@ const ContactForm: FC = () => {
             fullWidth
             variant="contained"
             color="primary"
+            // onSubmit={handleSubmitVariant('success')}
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Sending...' : 'Send Msg To Me'}

@@ -1,4 +1,7 @@
+// IMPORT REACT
 import React, { FC, ReactElement, useEffect } from 'react';
+
+// IMPORT COMPONENTS
 import {
   AppBar,
   Toolbar,
@@ -24,9 +27,9 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import TimeDisplay from './_TimeDisplay';
 
-interface IScrollTop {
-  children: React.ReactElement;
-}
+// IMPORT INTERFACES
+import { IHeader } from '../interfaces/IHeader';
+import { IScrollTop } from '../interfaces/IScrollTop';
 
 const ScrollTop: FC<IScrollTop> = (props): ReactElement => {
   const { children } = props;
@@ -64,14 +67,10 @@ const ScrollTop: FC<IScrollTop> = (props): ReactElement => {
   );
 };
 
-interface IHeader {
-  tabValue: number;
-  setTabValue: (val: number) => void;
-}
-
 const Header: FC<IHeader> = (props) => {
-  // Define States
+  // STATES
 
+  // For Tabs Switch
   const tabValue = props.tabValue;
   const setTabValue = props.setTabValue;
 

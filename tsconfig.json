@@ -24,8 +24,12 @@
     "emitDecoratorMetadata": true,
     "outDir": "./dist",
     "noUnusedLocals": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "pretty": true,
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["src"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

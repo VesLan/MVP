@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-type Props = {};
 
-function Project({}: Props) {
+function Project() {
   const [projectOne, setProjectOne] =
     useState<boolean>(false);
+
   return (
     <React.Fragment>
       {!projectOne && (
-        <Button>
+        <Button onClick={() => setProjectOne(true)}>
           <Typography
             sx={{
               m: 3,
