@@ -58,9 +58,13 @@ const ButtonWrapper = styled('div')({
   marginTop: '20px',
 });
 
-const About: FC = () => {
-  const [activeCard, setActiveCard] = useState(1);
+import { IAbout } from '../interfaces/IAbout';
 
+const About: FC<IAbout> = ({
+  activeCard,
+  setActiveCard,
+  toggleDrawer,
+}) => {
   const handleNext = () => {
     setActiveCard((prevActiveCard) =>
       prevActiveCard === 3 ? 1 : prevActiveCard + 1,
@@ -117,10 +121,14 @@ const About: FC = () => {
                 audioSrc={[
                   'src/assets/audios/Perfect.mp3',
                   'src/assets/audios/Apologize.mp3',
+                  'src/assets/audios/MyMusic1.mp3',
+                  'src/assets/audios/MyMusic2.mp3',
                 ]}
                 imageSrc={[
                   'src/assets/images/Perfect.jpg',
                   'src/assets/images/Apologize.jpg',
+                  'src/assets/images/MyMusic1.png',
+                  'src/assets/images/MyMusic2.png',
                 ]}
               />
             </Grid>
@@ -166,7 +174,6 @@ const About: FC = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     width: '80%',
-                    opacity: 0.8,
                   }}
                 />
               </Box>

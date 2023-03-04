@@ -4,10 +4,17 @@ import { Button, Typography, Box } from '@mui/material';
 import { IProjectList } from '../interfaces/IProjectList';
 
 const ProjectList: FC<IProjectList> = ({
+  showMd,
+  setShowMd,
   setProjIndex,
 }) => {
+  const handleClick = () => {
+    setProjIndex(0);
+    setShowMd(!showMd);
+  };
+
   return (
-    <Button sx={{ m: 1 }} onClick={() => setProjIndex(0)}>
+    <Button sx={{ m: 1 }} onClick={handleClick}>
       <Typography
         sx={{
           fontSize: 15,

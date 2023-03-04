@@ -14,11 +14,39 @@ import Task from './components/_Task';
 
 // IMPORT PAIR COMPONENTS
 import ContactForm from './components/_ContactForm';
+import AboutList from './components/_AboutList';
 import ProjectList from './components/_ProjectList';
 
+type Anchor = 'right';
+
 const App: FC = (): ReactElement => {
+  // STATES FOR ABOUT PAGE
   const [tabValue, setTabValue] = useState<number>(0);
+  const [activeCard, setActiveCard] = useState(1);
+  const [petListState, setPetListState] = useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  // STATES FOR PROJECT PAGE
   const [projIndex, setProjIndex] = useState<number>(-1);
+  const [showMd, setShowMd] = useState<boolean>(true);
+
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+
+      setPetListState({ ...petListState, [anchor]: open });
+    };
 
   return (
     <div className="App">
@@ -30,7 +58,16 @@ const App: FC = (): ReactElement => {
         <Grid xs={9}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route
+              path="/about"
+              element={
+                <About
+                  activeCard={activeCard}
+                  setActiveCard={setActiveCard}
+                  toggleDrawer={toggleDrawer}
+                />
+              }
+            />
             <Route
               path="/education"
               element={<Education />}
@@ -41,7 +78,12 @@ const App: FC = (): ReactElement => {
             />
             <Route
               path="/project"
-              element={<Project projIndex={projIndex} />}
+              element={
+                <Project
+                  showMd={showMd}
+                  projIndex={projIndex}
+                />
+              }
             />
             <Route path="/task" element={<Task />} />
           </Routes>
@@ -58,8 +100,18 @@ const App: FC = (): ReactElement => {
               <ContactForm />
             </SnackbarProvider>
           )}
+          {tabValue === 1 && activeCard === 3 && (
+            <AboutList
+              petListState={petListState}
+              toggleDrawer={toggleDrawer}
+            />
+          )}
           {tabValue === 4 && (
-            <ProjectList setProjIndex={setProjIndex} />
+            <ProjectList
+              showMd={showMd}
+              setShowMd={setShowMd}
+              setProjIndex={setProjIndex}
+            />
           )}
         </Grid>
       </Grid>
