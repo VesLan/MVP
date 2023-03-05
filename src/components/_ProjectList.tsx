@@ -1,5 +1,5 @@
 import _React, { FC } from 'react';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 import { IProjectList } from '../interfaces/IProjectList';
 
@@ -17,12 +17,12 @@ const ProjectList: FC<IProjectList> = ({
     <Button sx={{ m: 1 }} onClick={handleClick}>
       <Typography
         sx={{
-          fontSize: 15,
+          fontSize: 20,
           fontFamily: 'frijole',
-          letterSpacing: 1,
+          letterSpacing: 2,
         }}
       >
-        Front-End Capstone Project
+        Click to Show Superior
       </Typography>
     </Button>
   );

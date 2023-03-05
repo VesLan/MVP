@@ -1,14 +1,8 @@
-import React, { FC, useState } from 'react';
-import {
-  Box,
-  Button,
-  CardMedia,
-  Typography,
-  IconButton,
-} from '@mui/material';
+import React, { FC } from 'react';
+import { Box, CardMedia } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 
-const superiorMd = `
+const superiorMd_1 = `
 **A stylish implementation of a product detail page; designed with accessibility, functionality, and interactivity as core principles.**
 
 ![Top Language](https://img.shields.io/github/languages/top/HR-FEC-Team2/superior)
@@ -51,9 +45,9 @@ Product overview of a select product. Allows the user to add to cart, add to wis
 ### Technical Features
 * Synchronized carousel and gallery navigation
 * Responsive pan & zoom on inspect
+`;
 
-![Overview Image](https://user-images.githubusercontent.com/116389520/218281801-8086f80b-8134-4d37-ba6e-0f6f936bba89.jpg)
-
+const superiorMd_2 = `
 ## Ratings and Reviews
 ### Description
 A dashboard outlining various characteristics and ratings regarding the product as well as a list of detailed user accounts of the product and its various characteristics depending on the type of item selected.
@@ -61,9 +55,9 @@ A dashboard outlining various characteristics and ratings regarding the product 
 ### Technical Features
 * A suite of filters and sorting options that apply to the entire list of reviews without refresh
 * Review submission form that accepts up to five photos via drag and drop
+`;
 
-![Ratings and Reviews Image](https://user-images.githubusercontent.com/116389520/218283268-3889ff76-89e2-4898-a4ed-d239c292e2e1.jpg)
-
+const superiorMd_3 = `
 ## Related Items and Comparison
 ### Description
 A catalogue of items displayed in a carousel related to the selected product, as well as an outfit tracker which gives the user easy access to view their desired items side-by-side
@@ -71,19 +65,15 @@ A catalogue of items displayed in a carousel related to the selected product, as
 ### Technical Features
 * Carousels within carousels allows users to change the display of each related item to any of the photos within their galleries
 * Outfit tracker persists between page loads without use of a database
+`;
 
-![Related Items and Comparison Image](https://user-images.githubusercontent.com/116389520/218284010-eb224c46-556f-4b31-8bed-2bcac2a2e5e2.png)
-
-## Questions & Answers
+const superiorMd_4 = `
 ### Description
-A list of questions and answers about the selected product.
+A dashboard outlining various characteristics and ratings regarding the product as well as a list of detailed user accounts of the product and its various characteristics depending on the type of item selected.
 
-### Features
-* Displayed in a reactive and compact accordion
-* Updates on action (marking a question as helpful, reporting an answer, adding a question, etc.) without pageload
-* Allows the user to search and filter the list of questions upon input
-
-![Questions and Answers Image](https://user-images.githubusercontent.com/116389520/218284466-7e1243cf-beb7-4e8c-be22-2590cb51ee4f.png)
+### Technical Features
+* A suite of filters and sorting options that apply to the entire list of reviews without refresh
+* Review submission form that accepts up to five photos via drag and drop
 `;
 
 import { IProject } from '../interfaces/IProject';
@@ -93,18 +83,53 @@ const Project: FC<IProject> = ({ showMd, projIndex }) => {
     <React.Fragment>
       {showMd && (
         <>
-          <img
-            src="https://user-images.githubusercontent.com/116389520/218278997-59085a0f-ada8-44f6-be09-f5f9dc122ab9.png"
-            style={{
-              width: '20%',
-              margin: '1.5rem 0rem 0rem 1.5rem',
-            }}
-          />
           <Box sx={{ m: 3, w: 400 }}>
+            <img
+              src="https://user-images.githubusercontent.com/116389520/218278997-59085a0f-ada8-44f6-be09-f5f9dc122ab9.png"
+              style={{
+                width: '20%',
+              }}
+            />
             {
               // eslint-disable-next-line react/no-children-prop
-              <ReactMarkdown children={superiorMd} />
+              <ReactMarkdown children={superiorMd_1} />
             }
+            <img
+              src="https://user-images.githubusercontent.com/116389520/218283268-3889ff76-89e2-4898-a4ed-d239c292e2e1.jpg"
+              style={{
+                width: '70%',
+              }}
+            />
+            {
+              // eslint-disable-next-line react/no-children-prop
+              <ReactMarkdown children={superiorMd_2} />
+            }
+            <img
+              src="https://user-images.githubusercontent.com/116389520/218283268-3889ff76-89e2-4898-a4ed-d239c292e2e1.jpg"
+              style={{
+                width: '70%',
+              }}
+            />
+            {
+              // eslint-disable-next-line react/no-children-prop
+              <ReactMarkdown children={superiorMd_3} />
+            }
+            <img
+              src="https://user-images.githubusercontent.com/116389520/218284010-eb224c46-556f-4b31-8bed-2bcac2a2e5e2.png"
+              style={{
+                width: '70%',
+              }}
+            />
+            {
+              // eslint-disable-next-line react/no-children-prop
+              <ReactMarkdown children={superiorMd_4} />
+            }
+            <img
+              src="https://user-images.githubusercontent.com/116389520/218284466-7e1243cf-beb7-4e8c-be22-2590cb51ee4f.png"
+              style={{
+                width: '70%',
+              }}
+            />
           </Box>
         </>
       )}
