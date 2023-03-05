@@ -1,8 +1,6 @@
 import React from 'react';
 
-type Props = {};
-
-const Experience = (props: Props) => {
+const Experience = () => {
   return (
     <React.Fragment>
       <div>Experience</div>

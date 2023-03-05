@@ -1,13 +1,8 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, FC } from 'react';
 import { styled } from '@mui/material/styles';
 import { VariantType, useSnackbar } from 'notistack';
 
-import {
-  Button,
-  TextField,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Button, TextField, Stack } from '@mui/material';
 // import SendMail from '../sendEmail';
 
 const validateEmail = (email: string): boolean => {

@@ -1,5 +1,13 @@
 // IMPORT REACT
-import React, { FC, ReactElement, useEffect } from 'react';
+import React, {
+  FC,
+  ReactElement,
+  useEffect,
+  useContext,
+} from 'react';
+
+// IMPORT AUTHCONTEXT
+import { AuthContext } from './_AuthProvider';
 
 // IMPORT COMPONENTS
 import {
@@ -13,6 +21,7 @@ import {
   Tabs,
   Tab,
   Avatar,
+  IconButton,
 } from '@mui/material';
 import {
   Apple,
@@ -69,8 +78,9 @@ const ScrollTop: FC<IScrollTop> = (props): ReactElement => {
 
 const Header: FC<IHeader> = (props) => {
   // STATES
+  const { userId, handleLogOut } = useContext(AuthContext);
 
-  // For Tabs Switch
+  // FOR TABS SWITCH
   const tabValue = props.tabValue;
   const setTabValue = props.setTabValue;
 
@@ -232,15 +242,22 @@ const Header: FC<IHeader> = (props) => {
               }}
             />
           </Link>
-          <Avatar
-            src="src/assets/images/MyAvatar.png"
+          <IconButton
+            onClick={handleLogOut}
             sx={{
-              ml: 2,
-              mr: 2,
-              width: 24,
-              height: 24,
+              borderRadius: 0,
             }}
-          />
+          >
+            <Avatar
+              src="src/assets/images/MyAvatar.png"
+              sx={{
+                ml: 1,
+                mr: 1,
+                width: 24,
+                height: 24,
+              }}
+            />
+          </IconButton>
           <TimeDisplay />
         </Toolbar>
       </AppBar>
