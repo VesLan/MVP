@@ -17,10 +17,8 @@ const Form = styled('form')({
 });
 
 export const Login = () => {
-  const {
-    handleLoginWithGoogle,
-    handleLoginWithCredentials,
-  } = useContext(AuthContext);
+  const { handleLoginWithCredentials } =
+    useContext(AuthContext);
 
   const { handleChange, pass, email } = useForm({
     initialState: {
@@ -75,12 +73,6 @@ export const Login = () => {
           }}
         >
           Log In with Email and Password
-        </Button>
-        <Button
-          type="button"
-          onClick={handleLoginWithGoogle}
-        >
-          Log In with Google
         </Button>
       </Form>
     </Container>

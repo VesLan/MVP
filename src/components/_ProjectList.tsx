@@ -22,7 +22,9 @@ const ProjectList: FC<IProjectList> = ({
           letterSpacing: 2,
         }}
       >
-        Click to Show Superior
+        {showMd
+          ? 'Click to Show Superior'
+          : 'Click to Show Info'}
       </Typography>
     </Button>
   );

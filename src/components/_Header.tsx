@@ -112,7 +112,7 @@ const Header: FC<IHeader> = (props) => {
     ) {
       setTabValue(1);
     } else if (
-      window.location.pathname === '/education' &&
+      window.location.pathname === '/life' &&
       tabValue !== 2
     ) {
       setTabValue(2);
@@ -179,8 +179,8 @@ const Header: FC<IHeader> = (props) => {
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab
-              label="Education"
-              onClick={() => handleClick('education')}
+              label="Life"
+              onClick={() => handleClick('life')}
               sx={{ display: { xs: 'none', md: 'flex' } }}
             />
             <StyledTab

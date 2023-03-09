@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { VariantType, useSnackbar } from 'notistack';
 
 import { Button, TextField, Stack } from '@mui/material';
-// import SendMail from '../sendEmail';
+import axios from 'axios';
 
 const validateEmail = (email: string): boolean => {
   // Regular expression for email validation
@@ -87,7 +87,10 @@ const ContactForm: FC = () => {
     }
 
     handleSubmitVariant('success')();
-    // SendMail().catch(console.error);
+    axios
+      .post('http://localhost:4000/mail', formValues)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
   };
 
   return (

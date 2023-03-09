@@ -17,7 +17,7 @@ import Header from './components/_Header';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Home from './components/_Home';
 import About from './components/_About';
-import Education from './components/_Education';
+import Life from './components/_Life';
 import Experience from './components/_Experience';
 import Project from './components/_Project';
 import Task from './components/_Task';
@@ -29,15 +29,24 @@ import ProjectList from './components/_ProjectList';
 
 // IMPORT AUTH COMPONENTS
 import { AuthContext } from './components/_AuthProvider';
-import { Register } from './components/_ Register';
+import { Register } from './components/_Register';
 import { Login } from './components/_Login';
-import { TestHomePage } from './components/_TestHomePage';
+
+import { IMapCoordinate } from './interfaces/IMapCoordinate';
 
 type Anchor = 'right';
 
 const App: FC = (): ReactElement => {
   // AUTHENTICATION
   const { status, userId } = useContext(AuthContext);
+
+  // STATES FOR EXPERIENCE PAGE
+  const [mapCoordinate, setMapCoordinate] = useState({
+    lat: 34.07281753911052,
+    lng: -118.4424255933303,
+    heading: 190,
+    pitch: 15,
+  });
 
   // STATES FOR ABOUT PAGE
   const [tabValue, setTabValue] = useState<number>(0);
@@ -53,6 +62,7 @@ const App: FC = (): ReactElement => {
   const [projIndex, setProjIndex] = useState<number>(-1);
   const [showMd, setShowMd] = useState<boolean>(true);
 
+  // NOT WORKING FOR NOW
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -67,6 +77,7 @@ const App: FC = (): ReactElement => {
       setPetListState({ ...petListState, [anchor]: open });
     };
 
+  // AUTH CHECKING
   if (status === 'checking') {
     return (
       <Box
@@ -85,7 +96,7 @@ const App: FC = (): ReactElement => {
             letterSpacing: 3,
           }}
         >
-          Checking credentials, wait a moment...
+          Checking Credentials, Wait a Moment...
         </Typography>
         <CircularProgress
           color="secondary"
@@ -119,13 +130,14 @@ const App: FC = (): ReactElement => {
                     />
                   }
                 />
-                <Route
-                  path="/education"
-                  element={<Education />}
-                />
+                <Route path="/life" element={<Life />} />
                 <Route
                   path="/experience"
-                  element={<Experience />}
+                  element={
+                    <Experience
+                      mapCoordinate={mapCoordinate}
+                    />
+                  }
                 />
                 <Route
                   path="/project"

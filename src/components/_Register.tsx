@@ -17,8 +17,10 @@ const Form = styled('form')({
 });
 
 export const Register = () => {
-  const { handleRegisterWithCredentials } =
-    useContext(AuthContext);
+  const {
+    handleRegisterWithCredentials,
+    handleLoginWithGoogle,
+  } = useContext(AuthContext);
 
   const { handleChange, pass, email } = useForm({
     initialState: {
@@ -73,6 +75,12 @@ export const Register = () => {
           }}
         >
           Sign up
+        </Button>
+        <Button
+          type="button"
+          onClick={handleLoginWithGoogle}
+        >
+          Log In with Google
         </Button>
       </Form>
     </Container>
