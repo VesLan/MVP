@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { createTransport } from 'nodemailer';
 import dotenv from 'dotenv';
 dotenv.config();

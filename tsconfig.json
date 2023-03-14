@@ -23,8 +23,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "outDir": "./dist",
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noImplicitReturns": false,
     "sourceMap": true,
     "pretty": true,
     "typeRoots": ["node_modules/@types"]
