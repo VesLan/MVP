@@ -23,8 +23,8 @@ app.post('/mail', (req, res) => {
   SendMail(req.body);
 });
 
-app.listen(process.env.VITE_USER, () => {
+app.listen(process.env.PORT, () => {
   console.log(
-    `Server running at http://localhost:${process.env.VITE_USER}`,
+    `Server running at http://localhost:${process.env.PORT}`,
   );
 });
