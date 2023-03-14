@@ -15,7 +15,7 @@ const Experience: React.FC<IMapCoordinate> = ({
 }) => {
   // const { isLoaded, loadError } = useLoadScript({
   //   googleMapsApiKey:
-  //     'AIzaSyBZ7bqUZaDTk7wp7UWh3JnbA2-55M21z5Q',
+  //     import.meta.env.VITE_GOOGLE_MAP_API_KEY,
   // });
 
   // if (loadError) {
