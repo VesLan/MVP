@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { SendMail } from './sendEmail.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.post('/mail', (req, res) => {
   SendMail(req.body);
 });
 
-app.listen(4000, () => {
-  console.log('Server running at http://localhost:4000');
+app.listen(process.env.VITE_USER, () => {
+  console.log(
+    `Server running at http://localhost:${process.env.VITE_USER}`,
+  );
 });
