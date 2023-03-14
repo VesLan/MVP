@@ -1,4 +1,6 @@
 import { createTransport } from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const SendMail = async (info) => {
   const { firstName, lastName, email, message } = info;
@@ -8,8 +10,8 @@ export const SendMail = async (info) => {
     port: 465,
     secure: true,
     auth: {
-      user: '50011640@qq.com',
-      pass: 'brggsxuycusybhae',
+      user: process.env.VITE_USER,
+      pass: process.env.VITE_PASSWORD,
     },
   });
 

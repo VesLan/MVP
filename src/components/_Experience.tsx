@@ -79,7 +79,7 @@ const containerStyle = {
 // USING JS-API-LOADER
 
 const loader = new Loader({
-  apiKey: 'AIzaSyBZ7bqUZaDTk7wp7UWh3JnbA2-55M21z5Q',
+  apiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
   version: 'beta',
 });
 
