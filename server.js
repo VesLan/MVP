@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
   res.status(200).send('Get!');
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.post('/mail', (req, res) => {
   SendMail(req.body);
 });

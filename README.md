@@ -1,2 +1,3 @@
 # MVP
-A Website for Introducing Myself
+
+A Website for My Portfolio Blog
