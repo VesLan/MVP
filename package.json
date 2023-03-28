@@ -8,7 +8,7 @@
     "start": "ts-node server.js",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "server-dev": "npm run server/index.js"
+    "server-dev": "node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
