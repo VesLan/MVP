@@ -88,7 +88,7 @@ const ContactForm: FC = () => {
 
     handleSubmitVariant('success')();
     axios
-      .post('http://localhost:4000/mail', formValues)
+      .post(import.meta.env.VITE_MAILURL, formValues)
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
   };
